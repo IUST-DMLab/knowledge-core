@@ -8,7 +8,7 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
 import java.net.URL;
 
-@Transformer(value = "integer", description = "لینک")
+@Transformer(value = "url", description = "تبدیل به لینک")
 public class UrlTransformer implements ITransformer {
 
   @Override

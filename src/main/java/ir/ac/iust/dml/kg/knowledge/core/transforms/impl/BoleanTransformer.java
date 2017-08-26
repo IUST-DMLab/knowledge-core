@@ -6,7 +6,7 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.ITransformer;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformException;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
-@Transformer(value = "integer", description = "بولین")
+@Transformer(value = "boolean", description = "تبدیل به بولین")
 public class BoleanTransformer implements ITransformer {
 
   @Override

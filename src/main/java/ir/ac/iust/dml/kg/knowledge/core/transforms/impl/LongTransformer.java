@@ -6,7 +6,7 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.ITransformer;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformException;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
-@Transformer(value = "integer", description = "عدد بلند")
+@Transformer(value = "long", description = "تبدیل به عدد بلند")
 public class LongTransformer implements ITransformer {
 
   @Override

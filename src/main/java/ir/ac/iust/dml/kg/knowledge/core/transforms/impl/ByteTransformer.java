@@ -6,7 +6,7 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.ITransformer;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformException;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
-@Transformer(value = "integer", description = "بایت")
+@Transformer(value = "byte", description = "تبدیل به بایت")
 public class ByteTransformer implements ITransformer {
 
   @Override

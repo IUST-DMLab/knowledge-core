@@ -6,7 +6,7 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.ITransformer;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformException;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
-@Transformer(value = "integer", description = "عدد")
+@Transformer(value = "integer", description = "تبدیل به عدد")
 public class IntegerTransformer implements ITransformer {
 
   @Override
