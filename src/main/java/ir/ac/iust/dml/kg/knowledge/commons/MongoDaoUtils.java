@@ -16,7 +16,6 @@ import java.util.Map;
 /**
  * Utils for mongo query dao
  */
-@SuppressWarnings("Duplicates")
 public class MongoDaoUtils {
     @SuppressWarnings("unchecked")
     public static <T> PagingList<T> paging(MongoOperations op, Class<T> clazz, Query query, int page, int pageSize) {
