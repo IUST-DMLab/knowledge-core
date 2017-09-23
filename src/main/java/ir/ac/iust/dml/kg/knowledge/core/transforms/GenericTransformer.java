@@ -4,6 +4,11 @@ import ir.ac.iust.dml.kg.knowledge.core.TypedValue;
 import ir.ac.iust.dml.kg.knowledge.core.ValueType;
 
 /**
+ * Farsi Knowledge Graph Project
+ * Iran University of Science and Technology (Year 2017)
+ * Developed by HosseiN Khademi khaledi
+ *
+ *
  * Transformer that applied if transform not found
  * 1- this transformer ignore unit
  * 2- this transformer do not chang value

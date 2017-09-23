@@ -14,9 +14,23 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Farsi Knowledge Graph Project
+ * Iran University of Science and Technology (Year 2017)
+ * Developed by HosseiN Khademi khaledi
  * Utils for mongo query dao
  */
 public class MongoDaoUtils {
+    /**
+     * Add paging to query
+     *
+     * @param op       mongo operations
+     * @param clazz    type of entity to be read
+     * @param query    query must executed
+     * @param page     page to be read
+     * @param pageSize size of each page
+     * @param <T>
+     * @return Paged data list
+     */
     @SuppressWarnings("unchecked")
     public static <T> PagingList<T> paging(MongoOperations op, Class<T> clazz, Query query, int page, int pageSize) {
         if (pageSize > 0) {
@@ -29,6 +43,18 @@ public class MongoDaoUtils {
         }
     }
 
+    /**
+     * Add paging on aggregation class
+     * @param op mongo operations
+     * @param source entity that aggregation run on it
+     * @param destination type of result
+     * @param page page to be read
+     * @param pageSize size of each page
+     * @param operations list of aggregation operation
+     * @param <T1>
+     * @param <T2>
+     * @return Page data list
+     */
     public static <T1, T2> PagingList<T2> aggregate(MongoOperations op, Class<T1> source, Class<T2> destination,
                                                     int page, int pageSize,
                                                     AggregationOperation... operations) {
