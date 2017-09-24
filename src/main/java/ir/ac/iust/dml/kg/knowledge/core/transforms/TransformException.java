@@ -1,6 +1,10 @@
 package ir.ac.iust.dml.kg.knowledge.core.transforms;
 
 /**
+ * Farsi Knowledge Graph Project
+ * Iran University of Science and Technology (Year 2017)
+ * Developed by HosseiN Khademi khaledi
+ *
  * Exception that throws on bad value format
  */
 public class TransformException extends Exception {

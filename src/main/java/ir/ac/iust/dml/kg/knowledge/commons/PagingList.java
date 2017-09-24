@@ -3,6 +3,9 @@ package ir.ac.iust.dml.kg.knowledge.commons;
 import java.util.List;
 
 /**
+ * Farsi Knowledge Graph Project
+ * Iran University of Science and Technology (Year 2017)
+ * Developed by HosseiN Khademi khaledi
  * Class for paging list
  */
 public class PagingList<T> {
