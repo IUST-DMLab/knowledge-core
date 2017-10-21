@@ -8,7 +8,9 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.impl.*;
 import org.junit.Test;
 
 /**
- * Created by HosseiN on 01/07/2017.
+ * Farsi Knowledge Graph Project
+ * Iran University of Science and Technology (Year 2017)
+ * Developed by HosseiN Khademi khaledi
  */
 public class TestTransforms {
     @Test

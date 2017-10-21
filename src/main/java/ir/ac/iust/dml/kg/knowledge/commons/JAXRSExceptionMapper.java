@@ -11,7 +11,10 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
 /**
- * Map exception to response
+ * Farsi Knowledge Graph Project
+ * Iran University of Science and Technology (Year 2017)
+ * Developed by HosseiN Khademi khaledi
+ * Map exception to response used in apache cxf JaxRS
  */
 public class JAXRSExceptionMapper implements ExceptionMapper<Throwable> {
     private static final Logger LOG = LogManager.getLogger(JAXRSExceptionMapper.class);

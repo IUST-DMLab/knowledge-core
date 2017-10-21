@@ -4,6 +4,11 @@ import ir.ac.iust.dml.kg.knowledge.core.TypedValue;
 import ir.ac.iust.dml.kg.knowledge.core.ValueType;
 
 /**
+ * Farsi Knowledge Graph Project
+ * Iran University of Science and Technology (Year 2017)
+ * Developed by HosseiN Khademi khaledi
+ *
+ *
  * A transformer must implement this
  */
 public interface ITransformer {

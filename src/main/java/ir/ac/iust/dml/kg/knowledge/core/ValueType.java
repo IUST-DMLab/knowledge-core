@@ -1,7 +1,11 @@
 package ir.ac.iust.dml.kg.knowledge.core;
 
 /**
- * Types of value
+ * Farsi Knowledge Graph Project
+ * Iran University of Science and Technology (Year 2017)
+ * Developed by HosseiN Khademi khaledi
+ *
+ * Types of value that we handle
  */
 public enum ValueType {
     Resource, String, Boolean, Byte, Short, Integer, Long, Double, Float;

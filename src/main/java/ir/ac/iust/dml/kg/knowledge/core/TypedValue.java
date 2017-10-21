@@ -1,7 +1,14 @@
 package ir.ac.iust.dml.kg.knowledge.core;
 
 /**
+ * Farsi Knowledge Graph Project
+ * Iran University of Science and Technology (Year 2017)
+ * Developed by HosseiN Khademi khaledi
+ *
  * TypedValue of object
+ * A value can have type and language
+ * Language must be fa or en
+ * Value always stored in string format
  */
 public class TypedValue {
     private ValueType type;
