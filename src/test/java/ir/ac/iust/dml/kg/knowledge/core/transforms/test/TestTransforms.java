@@ -74,4 +74,55 @@ public class TestTransforms {
 
     }
 
+    @Test
+    public void startRangeTransformer() throws  TransformException
+    {
+        StartRangeTransformer startRangeTransformer=new StartRangeTransformer();
+        TypedValue result=startRangeTransformer.transform("2.5 تا 3.5","fa",ValueType.Float,null);
+        assert result.getValue().equals("2.5");
+    }
+
+    @Test
+    public void endRangeTransformer() throws  TransformException
+    {
+        EndRangeTransformer endRangeTransformer=new EndRangeTransformer();
+        TypedValue result=endRangeTransformer.transform("2.5 تا 3.5(بر حسب متر)","fa",ValueType.Float,null);
+        assert result.getValue().equals("3.5");
+    }
+    @Test
+    public void miladiDateTransformer() throws  TransformException
+    {
+        MiladiDateTransformer miladiDateTransformer=new MiladiDateTransformer();
+        TypedValue result=miladiDateTransformer.transform("23 ژوئیه ۱۹۵۲","fa",ValueType.String,null);
+        assert result.getValue().equals("08/23/1952");
+        result=miladiDateTransformer.transform("23 July ۱۹۵۲","fa",ValueType.String,null);
+        assert result.getValue().equals("08/23/1952");
+    }
+
+    @Test
+    public void shamsiDateTransformer() throws  TransformException
+    {
+        ShamsiDateTransformer shamsiDateTransformer=new ShamsiDateTransformer();
+        TypedValue result=shamsiDateTransformer.transform("23 فروردین ۱3۵۲","fa",ValueType.String,null);
+        assert result.getValue().equals("1352/1/23");
+
+    }
+
+    @Test
+    public void startRangeDateTransformer() throws  TransformException
+    {
+        StartRangeDateTransformer startRangeDateTransformer=new StartRangeDateTransformer();
+        TypedValue result=startRangeDateTransformer.transform(" 12 مرداد ۱۳۹۲ – ۲۷ شهریور ۱۳۹۵","fa",ValueType.String,null);
+        assert result.getValue().equals("1392/5/12");
+
+    }
+
+    @Test
+    public void endShamsiRangeDateTransformer() throws  TransformException
+    {
+        EndRangeDateTransformer endRangeDateTransformer=new EndRangeDateTransformer();
+        TypedValue result=endRangeDateTransformer.transform(" 12 مرداد ۱۳۹۲ – ۲۷ شهریور ۱۳۹۵","fa",ValueType.String,null);
+        assert result.getValue().equals("1395/6/27");
+
+    }
 }
