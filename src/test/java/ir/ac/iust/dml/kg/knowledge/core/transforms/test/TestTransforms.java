@@ -86,7 +86,7 @@ public class TestTransforms {
     public void endRangeTransformer() throws  TransformException
     {
         EndRangeTransformer endRangeTransformer=new EndRangeTransformer();
-        TypedValue result=endRangeTransformer.transform("2.5 تا 3.5(بر حسب متر)","fa",ValueType.Float,null);
+      TypedValue result = endRangeTransformer.transform("2.5 تا 3.5", "fa", ValueType.Float, null);
         assert result.getValue().equals("3.5");
     }
     @Test
@@ -122,5 +122,11 @@ public class TestTransforms {
         EndRangeDateTransformer endRangeDateTransformer=new EndRangeDateTransformer();
         TypedValue result=endRangeDateTransformer.transform(" 12 مرداد ۱۳۹۲ – ۲۷ شهریور ۱۳۹۵","fa",ValueType.String,null);
         assert Objects.equals(result.getValue(), "-18126646200000");
+      result = endRangeDateTransformer.transform(" 12 مرداد ۱۳۹۲ تا ۲۷ شهریور ۱۳۹۵", "fa", ValueType.String, null);
+      assert Objects.equals(result.getValue(), "-18126646200000");
+      result = endRangeDateTransformer.transform(" 12 مرداد ۱۳۹۲ الی ۲۷ شهریور ۱۳۹۵", "fa", ValueType.String, null);
+      assert Objects.equals(result.getValue(), "-18126646200000");
+      result = endRangeDateTransformer.transform("بین 12 مرداد ۱۳۹۲ و ۲۷ شهریور ۱۳۹۵", "fa", ValueType.String, null);
+      assert Objects.equals(result.getValue(), "-18126646200000");
     }
 }

@@ -17,7 +17,7 @@ public class ShamsiDateTransformer implements ITransformer {
     @Override
     public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
         try {
-            Date result = DateUtils.shamsiTransformer(value);
+          Date result = TransformUtils.shamsiTransformer(value);
             return new TypedValue(ValueType.Date, String.valueOf(result.getTime()), null);
         } catch (Throwable th) {
             throw new TransformException(th);

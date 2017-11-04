@@ -10,8 +10,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
-public class DateUtils {
+public class TransformUtils {
 
   private static final HashMap<String, String> enMonthDic;
   private static final HashMap<String, String> shamsiMonthDic;
@@ -105,4 +106,10 @@ public class DateUtils {
     Calendar calendar = new GregorianCalendar(year, month, day);
     return calendar.getTime();
   }
+
+  private final static String rangeRegex = "(از|بین|مابین)*" +
+      "\\s*(.*)\\s+" +
+      "(تا|-|–|و|الی)" +
+      "\\s+(.*)";
+  final static Pattern RANGE_PATTERN = Pattern.compile(rangeRegex);
 }

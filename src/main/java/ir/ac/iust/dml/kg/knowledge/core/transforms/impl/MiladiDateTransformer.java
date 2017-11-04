@@ -17,7 +17,7 @@ public class MiladiDateTransformer implements ITransformer {
     @Override
     public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
         try {
-            Date result = DateUtils.miladiTransformer(value);
+          Date result = TransformUtils.miladiTransformer(value);
             return new TypedValue(ValueType.Date, String.valueOf(result.getTime()), null);
         } catch (Throwable th) {
             throw new TransformException(th);

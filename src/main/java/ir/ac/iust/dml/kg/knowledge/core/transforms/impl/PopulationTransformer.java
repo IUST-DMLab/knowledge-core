@@ -14,7 +14,7 @@ public class PopulationTransformer implements ITransformer {
         try {
             value = value.replace("نفر", "");
             value = value.replaceAll("\\(.+\\)", "");
-          value = DateUtils.convertToEnglishDigits(value);
+          value = TransformUtils.convertToEnglishDigits(value);
 
             return new TypedValue(ValueType.Double, Math.round(Double.parseDouble(value)) + "", null);
         } catch (Throwable th) {
