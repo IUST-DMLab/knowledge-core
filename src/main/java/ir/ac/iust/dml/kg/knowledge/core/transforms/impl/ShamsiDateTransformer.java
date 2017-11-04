@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Created by mohammad on 10/21/2017.
  */
-@Transformer(value = "string", description = "تبدیل تاریخ شمسی حرفی به عددی")
+@Transformer(value = "jalaliDate", description = "تبدیل تاریخ شمسی حرفی به عددی")
 public class ShamsiDateTransformer implements ITransformer {
 
     @Override

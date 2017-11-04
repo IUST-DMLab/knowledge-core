@@ -6,7 +6,7 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.ITransformer;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformException;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
-@Transformer(value = "Double", description = "تبدیل مایل به کیلومتر")
+@Transformer(value = "mile2km", description = "تبدیل مایل به کیلومتر")
 public class MileToKmTransformer implements ITransformer {
 
     @Override

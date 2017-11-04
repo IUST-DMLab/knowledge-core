@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 /**
  * Created by mohammad on 10/21/2017.
  */
-@Transformer(value = "float", description = "تبدیل بازه به حداکثر آن")
+@Transformer(value = "endOfRange", description = "تبدیل بازه به حداکثر آن")
 public class EndRangeTransformer implements ITransformer {
 
     @Override

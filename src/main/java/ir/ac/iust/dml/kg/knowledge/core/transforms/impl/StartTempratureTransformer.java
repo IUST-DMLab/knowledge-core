@@ -8,7 +8,7 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
 import java.util.regex.Matcher;
 
-@Transformer(value = "float", description = "تبدیل متن به حداقل دما")
+@Transformer(value = "startOfTempRange", description = "تبدیل متن به حداقل دما")
 public class StartTempratureTransformer implements ITransformer {
 
     @Override

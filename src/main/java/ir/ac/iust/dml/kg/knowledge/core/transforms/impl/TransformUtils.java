@@ -110,6 +110,6 @@ public class TransformUtils {
   private final static String rangeRegex = "(از|بین|مابین)*" +
       "\\s*(.*)\\s+" +
       "(تا|-|–|و|الی)" +
-      "\\s+(.*)";
+      "\\s+(.*)\\s*(سانتی‌گراد|متر|کلیومتر)*";
   final static Pattern RANGE_PATTERN = Pattern.compile(rangeRegex);
 }

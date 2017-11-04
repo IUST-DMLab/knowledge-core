@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 /**
  * Created by mohammad on 10/21/2017.
  */
-@Transformer(value = "float", description = "تبدیل بازه به حداقل آن")
+@Transformer(value = "startOfRange", description = "تبدیل بازه به حداقل آن")
 public class StartRangeTransformer implements ITransformer {
 
     @Override

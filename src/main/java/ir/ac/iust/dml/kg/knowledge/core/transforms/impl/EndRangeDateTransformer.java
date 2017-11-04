@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 /**
  * Created by mohammad on 10/21/2017.
  */
-@Transformer(value = "String", description = "تبدیل بازه زمانی به حداکثر آن")
+@Transformer(value = "endOfDateRange", description = "تبدیل بازه زمانی به حداکثر آن")
 public class EndRangeDateTransformer implements ITransformer {
 
     @Override

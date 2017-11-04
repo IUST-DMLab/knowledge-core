@@ -32,7 +32,7 @@ public enum ValueType {
                 case Float:
                     return java.lang.Float.parseFloat(value);
                 case Date:
-                    return Date.parse(value);
+                  return new java.util.Date(java.lang.Long.parseLong(value));
             }
         } catch (Throwable throwable) {
             return new RuntimeException("Can not parse", throwable);

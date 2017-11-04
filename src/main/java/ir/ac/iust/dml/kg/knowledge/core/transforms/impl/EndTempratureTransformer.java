@@ -8,7 +8,7 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
 import java.util.regex.Matcher;
 
-@Transformer(value = "float", description = "تبدیل متن به حداکثر دما")
+@Transformer(value = "endOfTempRange", description = "تبدیل متن به حداکثر دما")
 public class EndTempratureTransformer implements ITransformer {
 
     @Override

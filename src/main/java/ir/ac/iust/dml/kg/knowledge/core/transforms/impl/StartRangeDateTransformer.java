@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 /**
  * Created by mohammad on 10/21/2017.
  */
-@Transformer(value = "String", description = "تبدیل بازه زمانی به حداقل آن")
+@Transformer(value = "startOfDateRange", description = "تبدیل بازه زمانی به حداقل آن")
 public class StartRangeDateTransformer implements ITransformer {
 
     @Override

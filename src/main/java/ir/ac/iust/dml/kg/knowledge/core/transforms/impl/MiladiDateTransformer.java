@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Created by mohammad on 10/21/2017.
  */
-@Transformer(value = "string", description = "تبدیل تاریخ میلادی حرفی به عددی")
+@Transformer(value = "gregorianDate", description = "تبدیل تاریخ میلادی حرفی به عددی")
 public class MiladiDateTransformer implements ITransformer {
 
     @Override
