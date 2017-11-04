@@ -13,7 +13,7 @@ public class StartTempratureTransformer implements ITransformer {
     public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
         try {
             value= value.replaceAll("\\(.*\\)","");
-            String[] strs = value.split("تا|-");
+            String[] strs = value.split("تا|الی");
             return new TypedValue(ValueType.Float, Float.parseFloat(strs[0]) + "", null);
         } catch (Throwable th) {
             throw new TransformException(th);

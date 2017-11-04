@@ -7,6 +7,8 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformScanner;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.impl.*;
 import org.junit.Test;
 
+import java.util.Objects;
+
 /**
  * Farsi Knowledge Graph Project
  * Iran University of Science and Technology (Year 2017)
@@ -39,20 +41,16 @@ public class TestTransforms {
 
     @Test
     public void startTemp() throws TransformException {
-
         StartTempratureTransformer startTemp = new StartTempratureTransformer();
         TypedValue result = startTemp.transform("-20 تا +30", "fa", ValueType.String, null);
         assert result.getValue().equals("-20.0");
-
     }
 
     @Test
     public void endTemp() throws TransformException {
-
         EndTempratureTransformer endTemp = new EndTempratureTransformer();
         TypedValue result = endTemp.transform("-20 تا +30", "fa", ValueType.String, null);
         assert result.getValue().equals("30.0");
-
     }
 
 
@@ -96,9 +94,9 @@ public class TestTransforms {
     {
         MiladiDateTransformer miladiDateTransformer=new MiladiDateTransformer();
         TypedValue result=miladiDateTransformer.transform("23 ژوئیه ۱۹۵۲","fa",ValueType.String,null);
-        assert result.getValue().equals("08/23/1952");
+        assert Long.parseLong(result.getValue()) == -547788600000L;
         result=miladiDateTransformer.transform("23 July ۱۹۵۲","fa",ValueType.String,null);
-        assert result.getValue().equals("08/23/1952");
+        assert Objects.equals(result.getValue(), "-547788600000");
     }
 
     @Test
@@ -106,7 +104,7 @@ public class TestTransforms {
     {
         ShamsiDateTransformer shamsiDateTransformer=new ShamsiDateTransformer();
         TypedValue result=shamsiDateTransformer.transform("23 فروردین ۱3۵۲","fa",ValueType.String,null);
-        assert result.getValue().equals("1352/1/23");
+        assert Objects.equals(result.getValue(), "-19496950200000");
 
     }
 
@@ -115,8 +113,7 @@ public class TestTransforms {
     {
         StartRangeDateTransformer startRangeDateTransformer=new StartRangeDateTransformer();
         TypedValue result=startRangeDateTransformer.transform(" 12 مرداد ۱۳۹۲ – ۲۷ شهریور ۱۳۹۵","fa",ValueType.String,null);
-        assert result.getValue().equals("1392/5/12");
-
+        assert Objects.equals(result.getValue(), "-18225142200000");
     }
 
     @Test
@@ -124,7 +121,6 @@ public class TestTransforms {
     {
         EndRangeDateTransformer endRangeDateTransformer=new EndRangeDateTransformer();
         TypedValue result=endRangeDateTransformer.transform(" 12 مرداد ۱۳۹۲ – ۲۷ شهریور ۱۳۹۵","fa",ValueType.String,null);
-        assert result.getValue().equals("1395/6/27");
-
+        assert Objects.equals(result.getValue(), "-18126646200000");
     }
 }

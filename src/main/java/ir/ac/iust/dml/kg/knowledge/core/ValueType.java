@@ -8,7 +8,7 @@ package ir.ac.iust.dml.kg.knowledge.core;
  * Types of value that we handle
  */
 public enum ValueType {
-    Resource, String, Boolean, Byte, Short, Integer, Long, Double, Float;
+    Resource, String, Boolean, Byte, Short, Integer, Long, Double, Float, Date;
 
     public Object parse(String value) {
         try {
@@ -31,6 +31,8 @@ public enum ValueType {
                     return java.lang.Double.parseDouble(value);
                 case Float:
                     return java.lang.Float.parseFloat(value);
+                case Date:
+                    return Date.parse(value);
             }
         } catch (Throwable throwable) {
             return new RuntimeException("Can not parse", throwable);
