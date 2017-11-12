@@ -6,17 +6,21 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.ITransformer;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformException;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
-@Transformer(value = "population", description = "تبدیل متن به جمعیت")
-public class PopulationTransformer implements ITransformer {
+import java.util.regex.Matcher;
+
+/**
+ * Created by mohammad on 10/21/2017.
+ */
+@Transformer(value = "endOfRange", description = "تبدیل بازه به حداکثر آن")
+public class EndRangeTransformer implements ITransformer {
 
     @Override
     public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
         try {
-            value = value.replace("نفر", "");
-            value = value.replaceAll("\\(.+\\)", "");
-          value = TransformUtils.convertToEnglishDigits(value);
-
-            return new TypedValue(ValueType.Double, Math.round(Double.parseDouble(value)) + "", null);
+            final Matcher matcher = TransformUtils.RANGE_PATTERN.matcher(value);
+            if (matcher.find())
+                return new TypedValue(ValueType.Float, Float.parseFloat(matcher.group(4)) + "", null);
+            throw new TransformException("no range matched.");
         } catch (Throwable th) {
             throw new TransformException(th);
         }

@@ -6,14 +6,18 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.ITransformer;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformException;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
-@Transformer(value = "float", description = "تبدیل متن به حداکثر دما")
+import java.util.regex.Matcher;
+
+@Transformer(value = "endOfTempRange", description = "تبدیل متن به حداکثر دما")
 public class EndTempratureTransformer implements ITransformer {
 
     @Override
     public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
         try {
-            String[] strs = value.split("تا");
-            return new TypedValue(ValueType.Float, Float.parseFloat(strs[1]) + "", null);
+            final Matcher matcher = TransformUtils.RANGE_PATTERN.matcher(value);
+            if (matcher.find())
+                return new TypedValue(ValueType.Float, Float.parseFloat(matcher.group(4)) + "", null);
+            throw new TransformException("no range matched.");
         } catch (Throwable th) {
             throw new TransformException(th);
         }

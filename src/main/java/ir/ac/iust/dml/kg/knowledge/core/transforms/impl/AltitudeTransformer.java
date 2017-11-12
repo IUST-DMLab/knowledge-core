@@ -6,7 +6,7 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.ITransformer;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformException;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
-@Transformer(value = "Double", description = "تبدیل متن به جمعیت")
+@Transformer(value = "altitude", description = "تبدیل متن به ارتفاع")
 public class AltitudeTransformer implements ITransformer {
 
     @Override
