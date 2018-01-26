@@ -34,7 +34,7 @@ public class TransformUtils {
   }
 
   static {
-    enMonthDic = new HashMap<String, String>();
+    enMonthDic = new HashMap<>();
     enMonthDic.put("ژانویه", "1");
     enMonthDic.put("فوریه", "2");
     enMonthDic.put("مارس", "3");
@@ -80,14 +80,17 @@ public class TransformUtils {
     return "miladi";
   }
 
+  @Deprecated
   public static Date miladiTransformer(String value) {
     return getDate(value, enMonthDic);
   }
 
+  @Deprecated
   public static Date shamsiTransformer(String value) {
     return getDate(value, shamsiMonthDic);
   }
 
+  @Deprecated
   private static Date getDate(String value, HashMap<String, String> monthDic) {
     value = value.toLowerCase();
 

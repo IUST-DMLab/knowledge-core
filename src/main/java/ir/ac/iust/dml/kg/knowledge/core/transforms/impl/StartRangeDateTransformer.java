@@ -6,7 +6,6 @@ import ir.ac.iust.dml.kg.knowledge.core.transforms.ITransformer;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.TransformException;
 import ir.ac.iust.dml.kg.knowledge.core.transforms.Transformer;
 
-import java.util.Date;
 import java.util.regex.Matcher;
 
 /**
@@ -15,23 +14,18 @@ import java.util.regex.Matcher;
 @Transformer(value = "startOfDateRange", description = "تبدیل بازه زمانی به حداقل آن")
 public class StartRangeDateTransformer implements ITransformer {
 
-    @Override
-    public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
-        try {
-            final Matcher matcher = TransformUtils.RANGE_PATTERN.matcher(value);
-            if (matcher.find()) {
-                Date date = null;
-                final String str = matcher.group(2);
-                if (TransformUtils.detectDateType(str).equals("shamsi"))
-                    date = TransformUtils.shamsiTransformer(str);
-                else if (TransformUtils.detectDateType(str).equals("miladi"))
-                    date = TransformUtils.miladiTransformer(str);
-                if (date == null) throw new TransformException("i can't detect date type");
-                return new TypedValue(ValueType.Date, String.valueOf(date.getTime()), null);
-            }
-            throw new TransformException("no range matched.");
-        } catch (Throwable th) {
-            throw new TransformException(th);
-        }
+  private final CommandoDateTransformer dateTransformer = new CommandoDateTransformer();
+
+  @Override
+  public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
+    try {
+      final Matcher matcher = TransformUtils.RANGE_PATTERN.matcher(value);
+      if (matcher.find()) {
+        return dateTransformer.transform(matcher.group(2), lang, type, unit);
+      }
+      throw new TransformException("no range matched.");
+    } catch (Throwable th) {
+      throw new TransformException(th);
     }
+  }
 }
