@@ -177,7 +177,7 @@ public class CommandoDateTransformer implements ITransformer {
       "|ربیع الثانی|جمادی الاول|جمادی‌الاول|جمادی‌الثانی|جمادی الثانی|رجب|شعبان|رمضان|شوال|ذی‌قعده|ذیقعده|ذی قعده" +
       "|ذی‌حجه|ذی حجه|ذیحجه)" +
       "\\s+(\\d+).*";
-  private final static String yearRegex = "(?U)(\\d+)\\s*(هجری قمری|هجری شمسی|هجری خورشیدی|قمری|شمسی|خورشیدی|میلادی).*";
+  private final static String yearRegex = "(?U)(\\d+)\\s*(هجری قمری|هجری شمسی|هجری خورشیدی|قمری|شمسی|خورشیدی|میلادی)*.*";
   private final static Pattern GRE_PATTERN = Pattern.compile(gregorianRegex);
   private final static Pattern GRE_PATTERN2 = Pattern.compile(gregorianRegex2);
   private final static Pattern JAL_PATTERN = Pattern.compile(jalaliRegex);
@@ -216,6 +216,12 @@ public class CommandoDateTransformer implements ITransformer {
 
   private TypedValue extractYEAR(Matcher matcher) {
     int year = Integer.parseInt(matcher.group(1));
+    if (matcher.group(2) == null) {
+      if (year > 1410)
+        return new TypedValue(ValueType.Date, String.valueOf(getGregorianDate(year, 0, 0)));
+      else
+        return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, 0, 0)));
+    }
     switch (matcher.group(2)) {
       case "میلادی":
         return new TypedValue(ValueType.Date, String.valueOf(getGregorianDate(year, 0, 0)));
