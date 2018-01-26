@@ -16,7 +16,6 @@ import org.joda.time.DateTime;
 import org.joda.time.chrono.IslamicChronology;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -207,8 +206,7 @@ public class CommandoDateTransformer implements ITransformer {
       if (matcher.matches()) return extractLunMonth(matcher);
       matcher = YEAR_PATTERN.matcher(value);
       if (matcher.matches()) return extractYEAR(matcher);
-      Date result = TransformUtils.miladiTransformer(value);
-      return new TypedValue(ValueType.Date, String.valueOf(result.getTime()), null);
+      throw new TransformException();
     } catch (Throwable th) {
       throw new TransformException(th);
     }
@@ -218,21 +216,21 @@ public class CommandoDateTransformer implements ITransformer {
     int year = Integer.parseInt(matcher.group(1));
     if (matcher.group(2) == null) {
       if (year > 1410)
-        return new TypedValue(ValueType.Date, String.valueOf(getGregorianDate(year, 0, 0)));
+        return new TypedValue(ValueType.Integer, String.valueOf(getGregorianDate(year, 1, 1)));
       else
-        return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, 0, 0)));
+        return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, 1, 1)));
     }
     switch (matcher.group(2)) {
       case "میلادی":
-        return new TypedValue(ValueType.Date, String.valueOf(getGregorianDate(year, 0, 0)));
+        return new TypedValue(ValueType.Date, String.valueOf(getGregorianDate(year, 1, 1)));
       case "خورشیدی":
       case "شمسی":
       case "هجری خورشیدی":
       case "هجری شمسی":
-        return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, 0, 0)));
+        return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, 1, 1)));
       case "قمری":
       case "هجری قمری":
-        return new TypedValue(ValueType.Date, String.valueOf(getLunarDate(year, 0, 0)));
+        return new TypedValue(ValueType.Date, String.valueOf(getLunarDate(year, 1, 1)));
     }
     return null;
   }
@@ -241,7 +239,7 @@ public class CommandoDateTransformer implements ITransformer {
     final String monthName = matcher.group(1);
     int month = getMonth(monthName);
     int year = Integer.parseInt(matcher.group(3));
-    return new TypedValue(ValueType.Date, String.valueOf(getLunarDate(year, month, 0)));
+    return new TypedValue(ValueType.Date, String.valueOf(getLunarDate(year, month, 1)));
   }
 
   private TypedValue extractLun(Matcher matcher) {
@@ -261,7 +259,7 @@ public class CommandoDateTransformer implements ITransformer {
     int month = getMonth(monthName);
     int year = Integer.parseInt(matcher.group(2));
 //    if (year < 100) year += 1300;
-    return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, month, 0)));
+    return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, month, 1)));
   }
 
   private TypedValue extractJal(Matcher matcher) {
@@ -294,7 +292,7 @@ public class CommandoDateTransformer implements ITransformer {
     int year = Integer.parseInt(matcher.group(2));
 //    if (year < 18) year += 2000;
 //    else if (year < 100) year += 1900;
-    return new TypedValue(ValueType.Date, String.valueOf(getGregorianDate(year, month, 0)));
+    return new TypedValue(ValueType.Date, String.valueOf(getGregorianDate(year, month, 1)));
   }
 
   private Long getGregorianDate(int year, int month, int day) {
