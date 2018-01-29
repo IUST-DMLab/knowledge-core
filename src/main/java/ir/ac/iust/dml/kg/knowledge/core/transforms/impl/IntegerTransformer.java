@@ -12,7 +12,7 @@ public class IntegerTransformer implements ITransformer {
   @Override
   public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
     try {
-      return new TypedValue(ValueType.Integer, Integer.parseInt(value) + "", null);
+      return new TypedValue(ValueType.Integer, Integer.parseInt(value.replace("٬", "")) + "", null);
     } catch (Throwable th) {
       throw new TransformException(th);
     }

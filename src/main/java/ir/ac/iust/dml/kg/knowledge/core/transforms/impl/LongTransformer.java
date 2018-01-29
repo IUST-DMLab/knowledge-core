@@ -12,7 +12,7 @@ public class LongTransformer implements ITransformer {
   @Override
   public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
     try {
-      return new TypedValue(ValueType.Long, Long.parseLong(value) + "", null);
+      return new TypedValue(ValueType.Long, Long.parseLong(value.replace("٬", "")) + "", null);
     } catch (Throwable th) {
       throw new TransformException(th);
     }

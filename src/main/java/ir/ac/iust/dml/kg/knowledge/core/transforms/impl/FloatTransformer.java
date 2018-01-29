@@ -12,7 +12,7 @@ public class FloatTransformer implements ITransformer {
   @Override
   public TypedValue transform(String value, String lang, ValueType type, String unit) throws TransformException {
     try {
-      return new TypedValue(ValueType.Float, Float.parseFloat(value) + "", null);
+      return new TypedValue(ValueType.Float, Float.parseFloat(TransformUtils.convertToEnglishDigits(value.replace("٬", "").replace("/", "."))) + "", null);
     } catch (Throwable th) {
       throw new TransformException(th);
     }

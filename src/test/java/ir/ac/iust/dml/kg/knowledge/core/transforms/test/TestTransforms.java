@@ -16,6 +16,16 @@ import java.util.Objects;
  */
 public class TestTransforms {
   @Test
+  public void generalTest() throws TransformException {
+    final TransformScanner scanner = new TransformScanner();
+    scanner.scan("ir.ac.iust.dml.kg.knowledge.core.transforms.impl");
+    assert scanner.getTransformer("double") instanceof DoubleTransformer;
+    DoubleTransformer t = (DoubleTransformer) scanner.getTransformer("double");
+    TypedValue result = t.transform("۷۹٬۹۲۶٬۲۷۰/۳", "fa", ValueType.String, null);
+    assert Double.parseDouble(result.getValue()) == 79926270.3;
+  }
+
+  @Test
   public void priceTest() throws TransformException {
     final TransformScanner scanner = new TransformScanner();
     scanner.scan("ir.ac.iust.dml.kg.knowledge.core.transforms.test");

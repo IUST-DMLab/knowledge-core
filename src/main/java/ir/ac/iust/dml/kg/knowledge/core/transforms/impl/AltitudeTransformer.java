@@ -14,7 +14,8 @@ public class AltitudeTransformer implements ITransformer {
         try {
             value = value.replace("متر", "");
             value = value.replaceAll("\\(.+\\)", "");
-            return new TypedValue(ValueType.Double, Math.round(Double.parseDouble(value)) + "", null);
+          return new TypedValue(ValueType.Double, Math.round(Double.parseDouble(
+              TransformUtils.convertToEnglishDigits(value.replace("٬", "").replace("/", ".")))) + "", null);
         } catch (Throwable th) {
             throw new TransformException(th);
         }
