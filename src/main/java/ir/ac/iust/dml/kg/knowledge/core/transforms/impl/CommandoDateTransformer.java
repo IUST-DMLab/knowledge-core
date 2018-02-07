@@ -204,8 +204,8 @@ public class CommandoDateTransformer implements ITransformer {
       if (matcher.matches()) return extractJalMonth(matcher);
       matcher = LMONTH_PATTERN.matcher(value);
       if (matcher.matches()) return extractLunMonth(matcher);
-      matcher = YEAR_PATTERN.matcher(value);
-      if (matcher.matches()) return extractYEAR(matcher);
+      //matcher = YEAR_PATTERN.matcher(value);
+      //if (matcher.matches()) return extractYEAR(matcher);
       throw new TransformException();
     } catch (Throwable th) {
       throw new TransformException(th);
