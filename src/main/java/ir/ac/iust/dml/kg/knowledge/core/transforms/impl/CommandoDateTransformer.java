@@ -204,8 +204,8 @@ public class CommandoDateTransformer implements ITransformer {
       if (matcher.matches()) return extractJalMonth(matcher);
       matcher = LMONTH_PATTERN.matcher(value);
       if (matcher.matches()) return extractLunMonth(matcher);
-      //matcher = YEAR_PATTERN.matcher(value);
-      //if (matcher.matches()) return extractYEAR(matcher);
+      matcher = YEAR_PATTERN.matcher(value);
+      if (matcher.matches()) return extractYEAR(matcher);
       throw new TransformException();
     } catch (Throwable th) {
       throw new TransformException(th);
@@ -216,21 +216,26 @@ public class CommandoDateTransformer implements ITransformer {
     int year = Integer.parseInt(matcher.group(1));
     if (matcher.group(2) == null) {
       if (year > 1410)
-        return new TypedValue(ValueType.Integer, String.valueOf(getGregorianDate(year, 1, 1)));
+//        return new TypedValue(ValueType.Integer, String.valueOf(getGregorianDate(year, 1, 1)));
+        return new TypedValue(ValueType.String, year  + " میلادی");
       else
-        return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, 1, 1)));
+//        return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, 1, 1)));
+        return new TypedValue(ValueType.String, String.valueOf(year));
     }
     switch (matcher.group(2)) {
       case "میلادی":
-        return new TypedValue(ValueType.Date, String.valueOf(getGregorianDate(year, 1, 1)));
+//        return new TypedValue(ValueType.Date, String.valueOf(getGregorianDate(year, 1, 1)));
+        return new TypedValue(ValueType.String, year + " میلادی");
       case "خورشیدی":
       case "شمسی":
       case "هجری خورشیدی":
       case "هجری شمسی":
-        return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, 1, 1)));
+//        return new TypedValue(ValueType.Date, String.valueOf(getJalaliDate(year, 1, 1)));
+        return new TypedValue(ValueType.String, year + " خورشیدی");
       case "قمری":
       case "هجری قمری":
-        return new TypedValue(ValueType.Date, String.valueOf(getLunarDate(year, 1, 1)));
+//        return new TypedValue(ValueType.Date, String.valueOf(getLunarDate(year, 1, 1)));
+        return new TypedValue(ValueType.String, year + " قمری");
     }
     return null;
   }
