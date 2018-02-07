@@ -94,6 +94,13 @@ public class TestTransforms {
     TypedValue result = shamsiDateTransformer.transform("23 فروردین ۱3۵۲", "fa", ValueType.String, null);
     assert Objects.equals(result.getValue(), "103408200000");
   }
+  
+  @Test
+  public void dateTransformer() throws TransformException {
+    CommandoDateTransformer transformer = new CommandoDateTransformer();
+    TypedValue result = transformer.transform("۳ شهریور ۱۳۱۳", "fa", ValueType.String, null);
+    System.out.println(result);
+  }
 
   @Test
   public void startRangeDateTransformer() throws TransformException {
